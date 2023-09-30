@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 6143476051740570530}
   - component: {fileID: 7145969928480652734}
   - component: {fileID: 4550444705546848700}
+  - component: {fileID: 3279041191966614356}
   m_Layer: 5
   m_Name: TaskCard
   m_TagString: Untagged
@@ -337,10 +338,10 @@ RectTransform:
   - {fileID: 3900601663237310696}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -774.7, y: 367.2}
-  m_SizeDelta: {x: -1676.0443, y: -792.6467}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 170, y: -175}
+  m_SizeDelta: {x: 240, y: 290}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7145969928480652734
 CanvasRenderer:
@@ -380,6 +381,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3279041191966614356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196148563445772530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77abffc1956864048aeba76b650e6044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIHP: {fileID: 8603986630907162084}
+  hpbar: 1.05
+  delta: 0.005
 --- !u!1 &8465173975480025918
 GameObject:
   m_ObjectHideFlags: 0
