@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Url
   - Bug
+  - Number
+  - Wall
   layers:
   - Default
   - TransparentFX
