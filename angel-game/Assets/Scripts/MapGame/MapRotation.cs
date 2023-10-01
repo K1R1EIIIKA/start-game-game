@@ -9,6 +9,7 @@ public class ProgressBarLogic : MonoBehaviour
     [SerializeField] private float rotateSpeed = 2;
     [SerializeField] private float rotateAcceleration = 1.005f;
     
+    
     private void Update()
     {
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + rotateSpeed, 0);
