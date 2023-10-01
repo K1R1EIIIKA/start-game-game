@@ -54,7 +54,6 @@ public class TaskGiver : MonoBehaviour
                 _taskCount++;
                 OnTaskCreate?.Invoke(GetRandomCharacter(), GetRandomItem());
                 _currentCooldown = GetRandomCooldowm();
-                Debug.Log(_currentCooldown);
             }
             else
             {
@@ -70,7 +69,6 @@ public class TaskGiver : MonoBehaviour
 
     private Character GetRandomCharacter()
     {
-        Debug.Log(_characters.Count - 1);
         int index = Random.Range(0, _characters.Count);
         Character badGuy = _characters[index];
         while (_stupidGuys.Contains(_characters[index]))

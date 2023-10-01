@@ -65,9 +65,12 @@ public class Task : MonoBehaviour
     {
         if (other.TryGetComponent(out Item item))
         {
+            Debug.Log(_conditionItem.TypeItem);
+            Debug.Log(item.TypeItem);
             if (_conditionItem.TypeItem == item.TypeItem)
             {
                 TaskGiver.Instance.DeacreaseTaskCount(_ownCharacter);
+                item.CompleteTarget();
                 OnTaskComplete?.Invoke();
             }
         }
