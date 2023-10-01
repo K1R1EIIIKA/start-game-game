@@ -72,6 +72,7 @@ public class Task : MonoBehaviour
                 TaskGiver.Instance.DeacreaseTaskCount(_ownCharacter);
                 item.CompleteTarget();
                 OnTaskComplete?.Invoke();
+                Destroy(gameObject);
             }
         }
     }

@@ -69,13 +69,17 @@ public class TaskGiver : MonoBehaviour
 
     private Character GetRandomCharacter()
     {
-        int index = Random.Range(0, _characters.Count);
-        Character badGuy = _characters[index];
-        while (_stupidGuys.Contains(_characters[index]))
+        List<Character> nonStupid = new List<Character>();
+        foreach (var character in _characters)
         {
-            index = Random.Range(0, _characters.Count);
-            badGuy = _characters[index];
+            if (!_stupidGuys.Contains(character))
+            {
+                nonStupid.Add(character);
+            }
         }
+        int index = Random.Range(0, nonStupid.Count);
+        Character badGuy = nonStupid[index];
+
         _stupidGuys.Add(badGuy);
         return badGuy;
     }

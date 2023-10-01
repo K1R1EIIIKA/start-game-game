@@ -21,6 +21,11 @@ public class TaskUI : MonoBehaviour
         {
             Destroy(gameObject);
         });
+
+        sugarDaddy.OnTaskComplete += (() =>
+        {
+            Destroy(gameObject);
+        });
     }
 
     private void SetCurrentHP(float hp)
