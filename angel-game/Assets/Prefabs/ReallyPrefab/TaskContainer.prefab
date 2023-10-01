@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxTaskHp: 100
-  _decreasedHealthPerSecond: 1
+  _decreasedHealthPerSecond: 5
   _second: 0.5
 --- !u!54 &7394956803516780323
 Rigidbody:

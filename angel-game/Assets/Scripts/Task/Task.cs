@@ -42,6 +42,7 @@ public class Task : MonoBehaviour
             _currentTaskHp = 0;
             OnTaskHpChanged?.Invoke(0);
             TaskGiver.Instance.DeacreaseTaskCount(_ownCharacter);
+            MainHp.Instance.TaskFailed();
             OnTaskFailed?.Invoke();
             Destroy(gameObject);
         }
