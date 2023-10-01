@@ -26,13 +26,13 @@ public class CollisionUrl : MonoBehaviour
             Time.timeScale = 0;
             PanelLose.SetActive(true); 
             Destroy(col.gameObject);
-           bugLast = GameObject.Find("/Canvas/Panel/Bug(Clone)");
+           bugLast = GameObject.Find("/BugGame/Panel/Bug(Clone)");
         Destroy(bugLast);
         }
     }
     public void RestartLevel()
     {
-        Global.count = 0;
+        GlobalThings.countBugs = 0;
         PanelLose.SetActive(false);
         Time.timeScale = 1;
     }

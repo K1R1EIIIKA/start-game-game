@@ -9,13 +9,13 @@ public class DeleteBug : MonoBehaviour
     public float speed=500;
     public void OnMouseDown()
     {
-        Global.count++;
+        GlobalThings.countBugs++;
         Destroy(gameObject);
 
     }
     void Start()
     {
-        url = GameObject.Find("/Canvas/Panel/Url");
+        url = GameObject.Find("/BugGame/Panel/Url");
        
 
     }

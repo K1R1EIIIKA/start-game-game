@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class Global
-{
-    public static int count = 0;
-    public static int cookie = 0;
 
-}
 public class BugSpawnMove : MonoBehaviour
 {
     public GameObject url;
@@ -55,11 +50,11 @@ public class BugSpawnMove : MonoBehaviour
 
     void Update()
     {
-        Score.text = Global.count.ToString() + "/20";
+        Score.text = GlobalThings.countBugs.ToString() + "/20";
 
-        if (Global.count > 20)
+        if (GlobalThings.countBugs > 20)
         {
-            GameIsOn = false; Global.cookie++;
+            GameIsOn = false; GlobalThings.cookie++;
             canvas.SetActive(false);
         }
         else
