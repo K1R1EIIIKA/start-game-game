@@ -17,6 +17,14 @@ public class ItemPorter : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (_currentItem != null && _isBusy)
+            {
+                _isBusy = false;
+                _currentItem.CompleteTarget();
+            }
+        }
     }
 
     public void TryJumpInBag(Item item)
