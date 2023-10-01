@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Task : MonoBehaviour
 {
+    private Character _ownCharacter;
     private Item _conditionItem;
 
     public Action<float> OnTaskHpChanged;
@@ -21,9 +22,10 @@ public class Task : MonoBehaviour
     public Action OnTaskComplete;
     public Action OnTaskFailed;
 
-    public void Initialize(Item item)
+    public void Initialize(Item item, Character character)
     {
         _conditionItem = item;
+        _ownCharacter = character;
     }
 
     // Start is called before the first frame update
@@ -39,7 +41,7 @@ public class Task : MonoBehaviour
         {
             _currentTaskHp = 0;
             OnTaskHpChanged?.Invoke(0);
-            TaskGiver.Instance.DeacreaseTaskCount();
+            TaskGiver.Instance.DeacreaseTaskCount(_ownCharacter);
             OnTaskFailed?.Invoke();
             Destroy(gameObject);
         }
@@ -63,9 +65,9 @@ public class Task : MonoBehaviour
     {
         if (other.TryGetComponent(out Item item))
         {
-            if (_conditionItem == item)
+            if (_conditionItem.TypeItem == item.TypeItem)
             {
-                TaskGiver.Instance.DeacreaseTaskCount();
+                TaskGiver.Instance.DeacreaseTaskCount(_ownCharacter);
                 OnTaskComplete?.Invoke();
             }
         }

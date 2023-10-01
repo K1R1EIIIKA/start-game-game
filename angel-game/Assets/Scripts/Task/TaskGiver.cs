@@ -14,10 +14,10 @@ public class TaskGiver : MonoBehaviour
     public static TaskGiver Instance { get; private set; }
     public Action<Character, Item> OnTaskCreate;
 
-    [SerializeField] private List<Character> _characters = new List<Character>();
+    [SerializeField] private List<Character> _characters;
 
     private List<Character> _stupidGuys = new List<Character>();
-    [SerializeField] private List<Item> _items = new List<Item>();
+    [SerializeField] private List<Item> _items;
 
     [SerializeField] private int _maxTaskCount = 3;
     private int _taskCount = 0;
@@ -38,6 +38,10 @@ public class TaskGiver : MonoBehaviour
     private void Start()
     {
         _currentCooldown = GetRandomCooldowm();
+        if (_maxTaskCount > _characters.Count)
+        {
+            _maxTaskCount = _characters.Count;
+        }
     }
 
     // Update is called once per frame
@@ -67,25 +71,26 @@ public class TaskGiver : MonoBehaviour
     private Character GetRandomCharacter()
     {
         Debug.Log(_characters.Count - 1);
-        int index = Random.Range(0, _characters.Count - 1);
+        int index = Random.Range(0, _characters.Count);
         Character badGuy = _characters[index];
         while (_stupidGuys.Contains(_characters[index]))
         {
-            index = Random.Range(0, _characters.Count - 1);
+            index = Random.Range(0, _characters.Count);
             badGuy = _characters[index];
         }
-
+        _stupidGuys.Add(badGuy);
         return badGuy;
     }
 
     private Item GetRandomItem()
     {
-        int index = Random.Range(0, _items.Count - 1);
+        int index = Random.Range(0, _items.Count);
         return _items[index];
     }
 
-    public void DeacreaseTaskCount()
+    public void DeacreaseTaskCount(Character character)
     {
+        _stupidGuys.Remove(character);
         _taskCount--;
     }
 }
