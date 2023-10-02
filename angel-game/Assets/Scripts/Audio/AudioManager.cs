@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     
     public Sound[] sounds;
+    [Range(0, 1f)] public float volumeLevel;
 
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class AudioManager : MonoBehaviour
             sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
 
-            sound.source.volume = sound.volume;
+            sound.source.volume = volumeLevel;
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
         }
