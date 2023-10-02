@@ -13,10 +13,12 @@ public class GameManager : MonoBehaviour
     public bool IsMinigameOpen;
     public bool IsDead;
 
+    private bool _isPaused;
+
     private void Awake()
     {
         StartGameTimer();
-        
+
         if (Instance == null)
         {
             Instance = this;
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void StopGameTimer()
+    public void StopGameTimer()
     {
         Time.timeScale = 0;
     }
@@ -41,7 +43,6 @@ public class GameManager : MonoBehaviour
     {
         if (MainHp.Instance.health <= 0)
             Death();
-        
         if (IsDead && Input.GetKeyDown(KeyCode.Return))
             RestartGame();
     }
