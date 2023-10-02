@@ -39,6 +39,5 @@ public class EscMenu : MonoBehaviour
     public void OpenSettings()
     {
         settingsCanvas.SetActive(true);
-        canvas.SetActive(false);
     }
 }

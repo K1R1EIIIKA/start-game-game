@@ -8,6 +8,7 @@ public class MenuNavigation : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuCanvas;
     [SerializeField] private GameObject settingsCanvas;
+    [SerializeField] private GameObject pauseCanvas;
 
     private void Start()
     {
@@ -22,10 +23,18 @@ public class MenuNavigation : MonoBehaviour
         GameManager.Instance.StopGameTimer();
     }
 
+    public void CloseSettings()
+    {
+        GameManager.Instance.IsMenuOpen = false;
+        settingsCanvas.SetActive(false);
+    }
+
     public void OpenMenu()
     {
         GameManager.Instance.IsMenuOpen = true;
         mainMenuCanvas.SetActive(true);
+        settingsCanvas.SetActive(false);
+        pauseCanvas.SetActive(false);
         GameManager.Instance.StopGameTimer();
     }
 
@@ -34,6 +43,9 @@ public class MenuNavigation : MonoBehaviour
         GameManager.Instance.IsMenuOpen = false;
         GameManager.Instance.StartGameTimer();
         mainMenuCanvas.SetActive(false);
+
+        GameManager.IsFirstGame = false;
+        pauseCanvas.SetActive(false);
+        GameManager.Instance.RestartGame();
     }
-    
 }
