@@ -35,16 +35,19 @@ public class TaskStart : MonoBehaviour
                 if (_minigameCanvas.TryGetComponent(out NumberSpawner numberSpawner))
                 {
                     numberSpawner.StartMicroGame();
+                    Debug.Log(Time.timeSinceLevelLoad);
                     numberSpawner.OnMinigameComplete += MicrogameComplete;
                 }
                 if (_minigameCanvas.TryGetComponent(out BugSpawnMove bugSpawnMove))
                 {
                     bugSpawnMove.StartMicroGame();
+                    Debug.Log(Time.timeSinceLevelLoad);
                     bugSpawnMove.OnMinigameComplete += MicrogameComplete;
                 }
                 if (_minigameCanvas.TryGetComponent(out ProgressBarLogic mapRotation))
                 {
                     mapRotation.StartMicroGame();
+                    Debug.Log(Time.timeSinceLevelLoad);
                     mapRotation.OnMinigameComplete += MicrogameComplete;
                 }
             }
@@ -74,6 +77,7 @@ public class TaskStart : MonoBehaviour
     public void MicrogameComplete()
     {
         Item reward = Instantiate(_reward, transform.position, Quaternion.identity);
+        Debug.Log(Time.timeSinceLevelLoad);
         reward.IsReference = false;
     }
 }

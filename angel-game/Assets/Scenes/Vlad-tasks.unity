@@ -7459,7 +7459,8 @@ MonoBehaviour:
   maxY: 0
   Score: {fileID: 4567957133969185675}
   PanelLose: {fileID: 3591346999099625656}
-  _winValue: 50
+  _winValue: 25
+  _spawnCooldown: 0.1
 --- !u!224 &9016992590859830813
 RectTransform:
   m_ObjectHideFlags: 0

@@ -27,4 +27,9 @@ public class ComputerMove : MonoBehaviour
         if (GlobalThings.IpGameIsOn)
             transform.position += new Vector3(Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime, 0, 0);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+    }
 }

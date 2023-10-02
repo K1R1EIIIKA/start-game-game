@@ -20,7 +20,10 @@ public class NumberSpawner : MonoBehaviour
     public GameObject PanelLose;
 
     [SerializeField] private float _winValue = 50;
+    [SerializeField] private float _spawnCooldown = 0.1f;
 
+    [SerializeField] private ComputerMove _computer;
+    [SerializeField] private Transform _startPosition;
     public Action OnMinigameComplete;
 
     // Start is called before the first frame update
@@ -28,6 +31,7 @@ public class NumberSpawner : MonoBehaviour
     {
         DeleteNumber();
         RestartGame();
+        _computer.transform.position = _startPosition.position;
         GameManager.Instance.IsMinigameOpen = true;
     }
 
@@ -48,8 +52,8 @@ public class NumberSpawner : MonoBehaviour
 
     private void SpawnNumber()
     {
-        minX = -880;
-        maxX = 848;
+        minX = -820;
+        maxX = 820;
         minY = -40;
         maxY = 446;
         var wantedx = Random.Range(minX, maxX);
@@ -70,6 +74,7 @@ public class NumberSpawner : MonoBehaviour
     public void RestartGame()
     {
         GlobalThings.countNumbers = 0;
+        _computer.transform.position = _startPosition.position;
         PanelLose.SetActive(false);
         GlobalThings.IpGameIsOn = true;
         StartCoroutine(ITimer());
@@ -79,9 +84,8 @@ public class NumberSpawner : MonoBehaviour
     {
         while (GlobalThings.IpGameIsOn)
         {
-            Debug.Log("Create number");
             SpawnNumber();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(_spawnCooldown);
         }
     }
 }
