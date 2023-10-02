@@ -87,13 +87,7 @@ public class TaskGiver : MonoBehaviour
 
     private Item GetRandomItem()
     {
-        int seed = Environment.TickCount;
-        ThreadLocal<System.Random> randomWrapper = new ThreadLocal<System.Random>(() =>
-            new System.Random(Interlocked.Increment(ref seed))
-        );
-        print(randomWrapper.Value);
-        // index %= _items.Count;
-        int index = 0;
+        int index = Random.Range(0, _items.Count);
         return _items[index];
     }
 
