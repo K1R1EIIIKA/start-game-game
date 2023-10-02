@@ -2876,8 +2876,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514297537}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.34709927, y: -0, z: -0, w: 0.9378284}
-  m_LocalPosition: {x: 0, y: 6.5103917, z: -7.5904408}
+  m_LocalRotation: {x: 0.34711772, y: -0.000000013038515, z: -0.00000046938655, w: 0.9378216}
+  m_LocalPosition: {x: 0.0000038146973, y: 6.5106893, z: -7.590185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4235,6 +4235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4618993d420385541b5cba9016de91c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1753246045}
   speed: 10
   groundDist: 2.87
   terrainLayer:
@@ -8045,13 +8046,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252379653}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.5, z: -0, w: 0.8660254}
+  m_LocalRotation: {x: 0, y: 0.8660254, z: -0, w: -0.5}
   m_LocalPosition: {x: 90.28, y: 4.61, z: 11.29}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113145026}
-  m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 240, z: 0}
 --- !u!65 &1252379656
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8951,13 +8952,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376546033}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.5, z: -0, w: 0.8660254}
+  m_LocalRotation: {x: 0, y: 0.86602545, z: 0, w: 0.49999994}
   m_LocalPosition: {x: 18.9, y: 4.61, z: 11.29}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113145026}
-  m_LocalEulerAnglesHint: {x: 0, y: -60, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
 --- !u!65 &1376546036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10786,6 +10787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753246044}
   - component: {fileID: 1753246043}
+  - component: {fileID: 1753246045}
   m_Layer: 0
   m_Name: pngwing.com
   m_TagString: Untagged
@@ -10854,12 +10856,33 @@ Transform:
   m_GameObject: {fileID: 1753246042}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.18999958, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 737421665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1753246045
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753246042}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab7cc7445242eeb458791932e85ecf21, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1754169765
 GameObject:
   m_ObjectHideFlags: 0
@@ -11025,8 +11048,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754169765}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.34709927, y: 0, z: 0, w: 0.9378284}
-  m_LocalPosition: {x: 52.1, y: 10.7303915, z: 3.1495588}
+  m_LocalRotation: {x: 0.34711772, y: -0.000000013038515, z: -0.00000046938655, w: 0.9378216}
+  m_LocalPosition: {x: 52.100002, y: 10.730689, z: 3.1498144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12744,13 +12767,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033004841}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 54.3, y: 4.8, z: 31.2}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113145026}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &2033004844
 BoxCollider:
   m_ObjectHideFlags: 0

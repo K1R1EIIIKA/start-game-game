@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public Animator animator;
     public float speed;
     public float groundDist;
 
@@ -14,6 +15,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -52,6 +54,13 @@ public class Movement : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
+
+        if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) )
+        {
+            animator.SetBool("moving", true);
+        }
+        else { 
+            animator.SetBool("moving", false);}
         ///  }
     }
 }
