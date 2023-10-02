@@ -10,10 +10,16 @@ public class TaskClose : MonoBehaviour
         gameObject.SetActive(false);
         GameManager.Instance.IsMinigameOpen = false;
         GlobalThings.IpGameIsOn = false;
+        GlobalThings.BugGameisOn = false;
 
         if (TryGetComponent(out NumberSpawner numberSpawner))
         {
             numberSpawner.DeleteNumber();
+        }
+
+        if (TryGetComponent(out BugSpawnMove bugSpawner))
+        {
+            bugSpawner.DeleteBugs();
         }
     }
 }

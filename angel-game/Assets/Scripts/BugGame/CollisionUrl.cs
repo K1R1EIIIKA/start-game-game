@@ -24,7 +24,7 @@ public class CollisionUrl : MonoBehaviour
         {
             PanelLose.SetActive(true); 
             Destroy(col.gameObject);
-            GlobalThings.bugGameisOn = false;
+            GlobalThings.BugGameisOn = false;
         }
     }
     //public void RestartLevel()

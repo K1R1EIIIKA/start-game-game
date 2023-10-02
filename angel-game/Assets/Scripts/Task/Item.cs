@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private Sprite _ownIcon;
 
-    [SerializeField] private bool _isReference;
+    public bool IsReference;
     public Sprite OwnIcon => _ownIcon;
     public Type TypeItem;
     private ItemPorter _porter;
@@ -30,7 +30,7 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!_isReference)
+        if (!IsReference)
         {
             if (other.TryGetComponent(out ItemPorter owner))
             {

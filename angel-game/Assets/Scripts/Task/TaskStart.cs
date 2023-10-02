@@ -10,6 +10,8 @@ public class TaskStart : MonoBehaviour
 
     [SerializeField] private GameObject _message;
 
+    [SerializeField] private Item _reward;
+
     private void Start()
     {
     }
@@ -33,6 +35,12 @@ public class TaskStart : MonoBehaviour
                 if (_minigameCanvas.TryGetComponent(out NumberSpawner numberSpawner))
                 {
                     numberSpawner.StartMicroGame();
+                    numberSpawner.OnMinigameComplete += MicrogameComplete;
+                }
+                if (_minigameCanvas.TryGetComponent(out BugSpawnMove bugSpawnMove))
+                {
+                    bugSpawnMove.StartMicroGame();
+                    bugSpawnMove.OnMinigameComplete += MicrogameComplete;
                 }
             }
         }
@@ -44,5 +52,19 @@ public class TaskStart : MonoBehaviour
         {
             _message.SetActive(false);
         }
+        if (_minigameCanvas.TryGetComponent(out NumberSpawner numberSpawner))
+        {
+            numberSpawner.OnMinigameComplete -= MicrogameComplete;
+        }
+        if (_minigameCanvas.TryGetComponent(out BugSpawnMove bugSpawnMove))
+        {
+            bugSpawnMove.OnMinigameComplete -= MicrogameComplete;
+        }
+    }
+
+    public void MicrogameComplete()
+    {
+        Item reward = Instantiate(_reward, transform.position, Quaternion.identity);
+        reward.IsReference = false;
     }
 }

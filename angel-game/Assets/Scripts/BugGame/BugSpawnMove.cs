@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using Random = UnityEngine.Random;
 
 public class BugSpawnMove : MonoBehaviour
 {
@@ -12,12 +14,15 @@ public class BugSpawnMove : MonoBehaviour
     public Transform parent;
     public GameObject PanelLose;
 
+    public float minX, maxX, minY, maxY;
 
-    public float minx, maxx, miny, maxy;
-
-    private List<GameObject> numberList = new List<GameObject>();
+    private List<GameObject> bugList = new List<GameObject>();
 
     [SerializeField] private TextMeshProUGUI Score;
+
+    [SerializeField] private float _winCondition;
+
+    public Action OnMinigameComplete;
 
     public void StartMicroGame()
     {
@@ -25,61 +30,66 @@ public class BugSpawnMove : MonoBehaviour
         RestartGame();
         GameManager.Instance.IsMinigameOpen = true;
     }
+
     public void RestartGame()
     {
-        GlobalThings.countBugs = 0;
+        GlobalThings.—ountBugs = 0;
         PanelLose.SetActive(false);
-        GlobalThings.bugGameisOn = true;
+        GlobalThings.BugGameisOn = true;
         StartCoroutine(ITimer());
     }
+
     private void FirstPos()
     {
-        minx = -880;
-        maxx = -300;
-        miny = -465;
-        maxy = 425;
-        var wantedx = Random.Range(minx, maxx);
-        var wantedy = Random.Range(miny, maxy);
+        minX = -880;
+        maxX = -300;
+        minY = -465;
+        maxY = 425;
+        var wantedx = Random.Range(minX, maxX);
+        var wantedy = Random.Range(minY, maxY);
         var position = new Vector3(wantedx + 960, wantedy + 540);
         GameObject go = Instantiate(bug, position, transform.rotation, parent);
-        numberList.Add(go);
+        bugList.Add(go);
     }
 
     private void SecondPos()
     {
-        minx = 365;
-        maxx = 856;
-        miny = -465;
-        maxy = 425;
-        var wantedx = Random.Range(minx, maxx);
-        var wantedy = Random.Range(miny, maxy);
+        minX = 365;
+        maxX = 856;
+        minY = -465;
+        maxY = 425;
+        var wantedx = Random.Range(minX, maxX);
+        var wantedy = Random.Range(minY, maxY);
         var position = new Vector3(wantedx + 960, wantedy + 540);
         var go = Instantiate(bug, position, transform.rotation, parent);
-        numberList.Add(go);
+        bugList.Add(go);
     }
 
     public void DeleteBugs()
     {
-        for (int i = 0; i < numberList.Count; i++)
+        for (int i = 0; i < bugList.Count; i++)
         {
-            Destroy(numberList[i]);
+            Destroy(bugList[i]);
         }
     }
+
     private void Update()
     {
-        Score.text = GlobalThings.countBugs.ToString() + "/20";
+        Score.text = GlobalThings.—ountBugs + "/" + _winCondition;
 
-        if (GlobalThings.countBugs > 20)
+        if (GlobalThings.—ountBugs >= _winCondition)
         {
-            GlobalThings.bugGameisOn = false;
+            Debug.Log("œŒ¡≈ƒ»À");
+            OnMinigameComplete?.Invoke();
+            GameManager.Instance.IsMinigameOpen = false;
+            GlobalThings.BugGameisOn = false;
             canvas.SetActive(false);
         }
-       
     }
 
     private IEnumerator ITimer()
     {
-        while (GlobalThings.bugGameisOn)
+        while (GlobalThings.BugGameisOn)
         {
             yield return new WaitForSeconds(1f);
             FirstPos();

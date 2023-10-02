@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using Random = UnityEngine.Random;
 
 public class NumberSpawner : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class NumberSpawner : MonoBehaviour
 
     [SerializeField] private float _winValue = 50;
 
+    public Action OnMinigameComplete;
+
     // Start is called before the first frame update
     public void StartMicroGame()
     {
@@ -35,6 +39,7 @@ public class NumberSpawner : MonoBehaviour
         if (GlobalThings.countNumbers > _winValue && GlobalThings.IpGameIsOn)
         {
             Debug.Log("онаедхк");
+            OnMinigameComplete?.Invoke();
             GameManager.Instance.IsMinigameOpen = false;
             GlobalThings.IpGameIsOn = false;
             canvas.SetActive(false);
