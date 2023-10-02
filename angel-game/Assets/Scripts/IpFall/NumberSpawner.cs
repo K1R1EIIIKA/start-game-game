@@ -62,8 +62,8 @@ public class NumberSpawner : MonoBehaviour
         float y = Random.Range(_spawnZone.position.y - _spawnZone.rect.height / 2 * Screen.height / 1080,
              _spawnZone.position.y + _spawnZone.rect.height / 2 * Screen.height / 1080);
 
-        Debug.Log(_spawnZone.rect.width * Screen.width / 1920);
-        Debug.Log(_spawnZone.rect.height);
+        //Debug.Log(_spawnZone.rect.width * Screen.width / 1920);
+        //Debug.Log(_spawnZone.rect.height);
         Vector3 spawnPosition = new Vector3(x, y, 0);
         GameObject go = Instantiate(number, spawnPosition, transform.rotation, parent);
         numberList.Add(go);

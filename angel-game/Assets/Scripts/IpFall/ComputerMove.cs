@@ -7,12 +7,30 @@ public class ComputerMove : MonoBehaviour
     public GameObject PanelLose;
     public int speed = 10;
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private float inputDirection;
+    private bool isTouchingBorder;
+    private BorderPlayerZeone _border;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (col.gameObject.tag == "Number")
+        Debug.Log(collision.name);
+        if (collision.gameObject.tag == "Number")
         {
             PanelLose.SetActive(true);
             GlobalThings.IpGameIsOn = false;
+        }
+        if (collision.TryGetComponent(out BorderPlayerZeone border))
+        {
+            isTouchingBorder = true;
+            _border = border;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out BorderPlayerZeone border))
+        {
+            isTouchingBorder = false;
         }
     }
 
@@ -21,15 +39,32 @@ public class ComputerMove : MonoBehaviour
     {
     }
 
+    private void Update()
+    {
+        inputDirection = Input.GetAxis("Horizontal");
+        if (isTouchingBorder)
+        {
+            if (_border.IsRight)
+            {
+                if (inputDirection > 0)
+                {
+                    inputDirection = 0;
+                }
+            }
+            else
+            {
+                if (inputDirection < 0)
+                {
+                    inputDirection = 0;
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     private void FixedUpdate()
     {
         if (GlobalThings.IpGameIsOn)
-            transform.position += new Vector3(Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime, 0, 0);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
+            transform.position += new Vector3(inputDirection * speed * Time.fixedDeltaTime, 0, 0);
     }
 }
