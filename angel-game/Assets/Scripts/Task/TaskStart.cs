@@ -6,37 +6,43 @@ using Random = UnityEngine.Random;
 
 public class TaskStart : MonoBehaviour
 {
-    [SerializeField] private GameObject[] gamesList;
-    [SerializeField] private GameObject popupCanvas;
+    [SerializeField] private GameObject _minigameCanvas;
 
-    private int _randNum;
+    [SerializeField] private GameObject _message;
 
     private void Start()
     {
-        _randNum = Random.Range(0, gamesList.Length);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent.TryGetComponent(out Movement player))
+        if (other.TryGetComponent(out Movement movement))
         {
-            popupCanvas.SetActive(true);
-        }
-    }
-    
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.transform.parent.TryGetComponent(out Movement player))
-        {
-            popupCanvas.SetActive(false);
+            _message.SetActive(true);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (other.TryGetComponent(out Movement movement))
         {
-            gamesList[_randNum].SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E) && !GameManager.Instance.IsMinigameOpen)
+            {
+                _message.SetActive(false);
+                _minigameCanvas.SetActive(true);
+                if (_minigameCanvas.TryGetComponent(out NumberSpawner numberSpawner))
+                {
+                    numberSpawner.StartMicroGame();
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out Movement movement))
+        {
+            _message.SetActive(false);
         }
     }
 }

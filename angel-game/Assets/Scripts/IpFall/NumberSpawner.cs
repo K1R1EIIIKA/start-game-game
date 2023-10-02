@@ -17,18 +17,26 @@ public class NumberSpawner : MonoBehaviour
     private TextMeshProUGUI textNumber;
     public GameObject PanelLose;
 
+    [SerializeField] private float _winValue = 50;
+
     // Start is called before the first frame update
-    private void Start()
+    public void StartMicroGame()
     {
-        StartCoroutine(ITimer());
+        DeleteNumber();
+        RestartGame();
+        GameManager.Instance.IsMinigameOpen = true;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        Score.text = GlobalThings.countNumbers.ToString() + "/100";
-        if (GlobalThings.countNumbers > 100)
+        Score.text = GlobalThings.countNumbers + "/" + _winValue;
+
+        if (GlobalThings.countNumbers > _winValue && GlobalThings.IpGameIsOn)
         {
+            Debug.Log("онаедхк");
+            GameManager.Instance.IsMinigameOpen = false;
+            GlobalThings.IpGameIsOn = false;
             canvas.SetActive(false);
         }
     }
@@ -52,16 +60,21 @@ public class NumberSpawner : MonoBehaviour
         {
             Destroy(numberList[i]);
         }
+    }
 
-        Time.timeScale = 1;
+    public void RestartGame()
+    {
+        GlobalThings.countNumbers = 0;
         PanelLose.SetActive(false);
-        GlobalThings.ipGameisOn = true;
+        GlobalThings.IpGameIsOn = true;
+        StartCoroutine(ITimer());
     }
 
     private IEnumerator ITimer()
     {
-        while (GlobalThings.ipGameisOn)
+        while (GlobalThings.IpGameIsOn)
         {
+            Debug.Log("Create number");
             SpawnNumber();
             yield return new WaitForSeconds(0.2f);
         }

@@ -17,7 +17,7 @@ public class ItemPorter : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G) && !GameManager.Instance.IsMinigameOpen)
         {
             if (_currentItem != null && _isBusy)
             {

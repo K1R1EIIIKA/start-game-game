@@ -5,20 +5,15 @@ using UnityEngine;
 
 public class TaskClose : MonoBehaviour
 {
-    public void CloseGame()
+    public void CloseMicroGame()
     {
-        Close();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Close();
-    }
-
-    private void Close()
-    {
-        Time.timeScale = 1;
         gameObject.SetActive(false);
+        GameManager.Instance.IsMinigameOpen = false;
+        GlobalThings.IpGameIsOn = false;
+
+        if (TryGetComponent(out NumberSpawner numberSpawner))
+        {
+            numberSpawner.DeleteNumber();
+        }
     }
 }

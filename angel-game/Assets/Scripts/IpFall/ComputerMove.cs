@@ -5,27 +5,26 @@ using UnityEngine;
 public class ComputerMove : MonoBehaviour
 {
     public GameObject PanelLose;
-    public int speed=10;
-    void OnTriggerEnter2D(Collider2D col)
+    public int speed = 10;
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Number")
         {
-            Time.timeScale = 0;
-            GlobalThings.countNumbers = 0;
             PanelLose.SetActive(true);
-            GlobalThings.ipGameisOn = false;
-
+            GlobalThings.IpGameIsOn = false;
         }
     }
-// Start is called before the first frame update
-void Start()
+
+    // Start is called before the first frame update
+    private void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        transform.position += new Vector3(Input.GetAxis("Horizontal")*speed * Time.fixedDeltaTime, 0 ,0);
+        if (GlobalThings.IpGameIsOn)
+            transform.position += new Vector3(Input.GetAxis("Horizontal") * speed * Time.fixedDeltaTime, 0, 0);
     }
 }
