@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
 
     public bool IsMinigameOpen;
     public bool IsDead;
+    public bool IsMenuOpen;
+    
+    public static bool IsFirstGame = true;
 
     private bool _isPaused;
 
     private void Awake()
     {
-        StartGameTimer();
-
         if (Instance == null)
         {
             Instance = this;
@@ -27,6 +28,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        if (IsFirstGame)
+            StopGameTimer();
+        else
+            StartGameTimer();
     }
 
     public void StartGameTimer()
@@ -50,6 +56,7 @@ public class GameManager : MonoBehaviour
     private void Death()
     {
         IsDead = true;
+        IsFirstGame = false;
         StopGameTimer();
         gameOverCanvas.SetActive(true);
     }
