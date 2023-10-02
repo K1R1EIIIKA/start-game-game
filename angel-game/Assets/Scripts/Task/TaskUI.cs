@@ -9,7 +9,7 @@ public class TaskUI : MonoBehaviour
     [SerializeField] private Image _characterImage;
     [SerializeField] private Image _necessaryItemImage;
     // Start is called before the first frame update
-
+    
     public void Initialize(Sprite character, Sprite item, float taskHP, Task sugarDaddy)
     {
         _characterImage.sprite = character;
