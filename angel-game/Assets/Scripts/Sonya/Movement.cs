@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //while (GameManager.Instance.IsMinigameOpen) { 
         RaycastHit hit;
         Vector3 castPos = transform.position;
         if (Physics.Raycast(castPos,-transform.up,out hit,Mathf.Infinity,terrainLayer))
@@ -44,6 +45,6 @@ public class Movement : MonoBehaviour
         {
             sr.flipX = false;
         }
-
+      ///  } 
     }
 }

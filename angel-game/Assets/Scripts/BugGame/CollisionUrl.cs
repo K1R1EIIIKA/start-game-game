@@ -22,18 +22,15 @@ public class CollisionUrl : MonoBehaviour
     {
         if (col.gameObject.tag == "Bug")
         {
-            
-            Time.timeScale = 0;
             PanelLose.SetActive(true); 
             Destroy(col.gameObject);
-           bugLast = GameObject.Find("/BugGame/Panel/Bug(Clone)");
-        Destroy(bugLast);
+            GlobalThings.bugGameisOn = false;
         }
     }
-    public void RestartLevel()
-    {
-        GlobalThings.countBugs = 0;
-        PanelLose.SetActive(false);
-        Time.timeScale = 1;
-    }
+    //public void RestartLevel()
+    //{
+    //    GlobalThings.countBugs = 0;
+    //    PanelLose.SetActive(false);
+    //    Time.timeScale = 1;
+    //}
 }

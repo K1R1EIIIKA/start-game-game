@@ -27,15 +27,7 @@ public class DeleteBug : MonoBehaviour
         Vector3 Look = transform.InverseTransformPoint(url.transform.position);
         float angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg - 90;
         transform.Rotate(0, 0, angle);
-        //for ( int i=0; i< 5; i++) {
-        //    angle = angle + 5 * Time.deltaTime;
-        //    transform.Rotate(0, 0, angle);
-        //}
-        //for ( int i=0; i< 5; i++)
-        //{
-        //    angle = angle - 5 * Time.deltaTime;
-        //    transform.Rotate(0, 0, angle);
-        //}
+  
     }
  
 
