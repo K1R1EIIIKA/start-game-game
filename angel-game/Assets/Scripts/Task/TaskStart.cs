@@ -42,6 +42,11 @@ public class TaskStart : MonoBehaviour
                     bugSpawnMove.StartMicroGame();
                     bugSpawnMove.OnMinigameComplete += MicrogameComplete;
                 }
+                if (_minigameCanvas.TryGetComponent(out ProgressBarLogic mapRotation))
+                {
+                    mapRotation.StartMicroGame();
+                    mapRotation.OnMinigameComplete += MicrogameComplete;
+                }
             }
         }
     }
@@ -59,6 +64,10 @@ public class TaskStart : MonoBehaviour
         if (_minigameCanvas.TryGetComponent(out BugSpawnMove bugSpawnMove))
         {
             bugSpawnMove.OnMinigameComplete -= MicrogameComplete;
+        }
+        if (_minigameCanvas.TryGetComponent(out ProgressBarLogic mapRotation))
+        {
+            mapRotation.OnMinigameComplete -= MicrogameComplete;
         }
     }
 
