@@ -93,7 +93,8 @@ public class TaskGiver : MonoBehaviour
         );
         print(randomWrapper.Value);
         // index %= _items.Count;
-        int index = 0;
+       // int index = 0;
+        int index = Random.Range(0,_items.Count) ;
         return _items[index];
     }
 
