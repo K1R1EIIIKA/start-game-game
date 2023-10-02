@@ -6,7 +6,7 @@ public class EscMenu : MonoBehaviour
     public GameObject canvas;
 
     [SerializeField] private GameObject settingsCanvas;
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.Instance.IsMenuOpen && !GameManager.Instance.IsDead)
@@ -20,8 +20,9 @@ public class EscMenu : MonoBehaviour
 
     private void Pause()
     {
-        Time.timeScale = 0;
         canvas.SetActive(true);
+        GameManager.Instance.StopGameTimer();
+        settingsCanvas.SetActive(false);
     }
 
     public void QuitGame()
@@ -31,11 +32,12 @@ public class EscMenu : MonoBehaviour
 
     public void Resume()
     {
-        Time.timeScale = 1;
         canvas.SetActive(false);
+        settingsCanvas.SetActive(false);
+        GameManager.Instance.StartGameTimer();
         // FindObjectOfType<AudioManager>().Play("button");
     }
-    
+
     public void OpenSettings()
     {
         settingsCanvas.SetActive(true);
