@@ -618,7 +618,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 66e716585b4b7c0409337e2785ed68c4,
+      objectReference: {fileID: 21300000, guid: 280a2d232a8572c459503ad639b48485,
         type: 3}
     - target: {fileID: 4372083342734343959, guid: ea2a39f5617611747b6891c8fa4b4b23,
         type: 3}
@@ -980,7 +980,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: 0.000022888}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0.000022888184}
   m_SizeDelta: {x: 122.9701, y: 129.3583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176093961
@@ -1961,7 +1961,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: da2d7802fa3368d4cbfa9c30133f2809,
+      objectReference: {fileID: 21300000, guid: 721b7c29fb7f1764d99db2898dbe1776,
         type: 3}
     - target: {fileID: 3767430539391285418, guid: ea2a39f5617611747b6891c8fa4b4b23,
         type: 3}
@@ -3716,7 +3716,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3d1969386f1f16c4ebb31e88ad8f24b4,
+      objectReference: {fileID: 21300000, guid: 37e7a1ebe7a6dfc468703ef2c8354fd0,
         type: 3}
     - target: {fileID: 3767430539391285418, guid: ea2a39f5617611747b6891c8fa4b4b23,
         type: 3}
@@ -5045,7 +5045,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: da2d7802fa3368d4cbfa9c30133f2809,
+      objectReference: {fileID: 21300000, guid: 721b7c29fb7f1764d99db2898dbe1776,
         type: 3}
     - target: {fileID: 3767430539391285418, guid: ea2a39f5617611747b6891c8fa4b4b23,
         type: 3}
@@ -5464,7 +5464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000011921, y: 0.000021935}
+  m_AnchoredPosition: {x: 0, y: 0.000022888184}
   m_SizeDelta: {x: 73.9439, y: 77.7852}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1144097809
@@ -7649,7 +7649,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3d1969386f1f16c4ebb31e88ad8f24b4,
+      objectReference: {fileID: 21300000, guid: 37e7a1ebe7a6dfc468703ef2c8354fd0,
         type: 3}
     - target: {fileID: 3767430539391285418, guid: ea2a39f5617611747b6891c8fa4b4b23,
         type: 3}
@@ -9913,7 +9913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: BackgroundMusic
-    clip: {fileID: 8300000, guid: 405d83e253a950c4a808b5a4b98c24b0, type: 3}
+    clip: {fileID: 8300000, guid: 90f303e7cec0d2042ab8dd78d33cf16c, type: 3}
     source: {fileID: 0}
     pitch: 1
     loop: 1
@@ -10631,7 +10631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.61180115}
+  m_AnchoredPosition: {x: 0, y: -0.6118164}
   m_SizeDelta: {x: 25, y: -17.1318}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1996958842
@@ -10706,7 +10706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.61183167}
+  m_AnchoredPosition: {x: 0, y: -0.6118164}
   m_SizeDelta: {x: 25, y: -17.132}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2034013755
