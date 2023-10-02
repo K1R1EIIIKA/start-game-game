@@ -8,15 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private GameObject gameOverCanvas;
-
     public bool IsMinigameOpen;
     public bool IsDead;
     public bool IsMenuOpen;
-    
+
     public static bool IsFirstGame = true;
 
     private bool _isPaused;
+
+    public Action OnPlayerDead;
 
     private void Awake()
     {
@@ -28,11 +28,16 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
         if (IsFirstGame)
             StopGameTimer();
         else
             StartGameTimer();
+    }
+
+    private void Start()
+    {
+        OnPlayerDead += Death;
     }
 
     public void StartGameTimer()
@@ -47,8 +52,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (MainHp.Instance.health <= 0)
-            Death();
         if (IsDead && Input.GetKeyDown(KeyCode.Return))
             RestartGame();
     }
@@ -58,7 +61,6 @@ public class GameManager : MonoBehaviour
         IsDead = true;
         IsFirstGame = false;
         StopGameTimer();
-        gameOverCanvas.SetActive(true);
     }
 
     public void RestartGame()

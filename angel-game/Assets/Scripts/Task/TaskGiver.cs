@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -86,7 +87,13 @@ public class TaskGiver : MonoBehaviour
 
     private Item GetRandomItem()
     {
-        int index = Random.Range(0, _items.Count);
+        int seed = Environment.TickCount;
+        ThreadLocal<System.Random> randomWrapper = new ThreadLocal<System.Random>(() =>
+            new System.Random(Interlocked.Increment(ref seed))
+        );
+        print(randomWrapper.Value);
+        // index %= _items.Count;
+        int index = 0;
         return _items[index];
     }
 

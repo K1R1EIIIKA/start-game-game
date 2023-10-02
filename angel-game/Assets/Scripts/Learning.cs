@@ -1,22 +1,28 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-public class MenuNavigation : MonoBehaviour
+public class Learning : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuCanvas;
     [SerializeField] private GameObject settingsCanvas;
     [SerializeField] private GameObject pauseCanvas;
     [SerializeField] private GameObject gameOverCanvas;
 
+    [SerializeField] private GameObject learningCanvas;
+
+    // Start is called before the first frame update
     private void Start()
     {
         if (GameManager.IsFirstGame)
             OpenStartMenu();
 
         GameManager.Instance.OnPlayerDead += ShowGameOverMenu;
+    }
+
+    private void Update()
+    {
+        learningCanvas.SetActive(!GameManager.Instance.IsMinigameOpen);
     }
 
     public void OpenSettings()
@@ -50,7 +56,7 @@ public class MenuNavigation : MonoBehaviour
         GameManager.Instance.StopGameTimer();
     }
 
-    public void StartGame()
+    public void StartLearning()
     {
         GameManager.Instance.IsMenuOpen = false;
         GameManager.Instance.StartGameTimer();
@@ -59,6 +65,8 @@ public class MenuNavigation : MonoBehaviour
         pauseCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
         GameManager.IsFirstGame = false;
+
+        learningCanvas.SetActive(true);
     }
 
     private void OnDisable()

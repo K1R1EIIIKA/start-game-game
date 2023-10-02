@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/bugGame.unity
     guid: 893615deb9922ca47b7643f51efc1ea6
+  - enabled: 1
+    path: Assets/Scenes/Vlad-tasks.unity
+    guid: 317b54580c0f4d749b691230fa8c30cc
   m_configObjects: {}

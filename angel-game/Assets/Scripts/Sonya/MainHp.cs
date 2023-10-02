@@ -33,7 +33,7 @@ public class MainHp : MonoBehaviour
         health--;
         if (health <= 0)
         {
-            Debug.Log("Проебали");
+            GameManager.Instance.OnPlayerDead?.Invoke();
         }
     }
 
