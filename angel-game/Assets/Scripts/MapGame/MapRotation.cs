@@ -29,7 +29,7 @@ public class ProgressBarLogic : MonoBehaviour
 
     private void Update()
     {
-        _rotatedObjet.rotation = Quaternion.Euler(0, _rotatedObjet.rotation.eulerAngles.y + rotateSpeed, 0);
+        _rotatedObjet.rotation = Quaternion.Euler(0, 0, _rotatedObjet.rotation.eulerAngles.z + rotateSpeed);
 
         if (Input.GetKeyDown(KeyCode.Space))
             rotateSpeed += rotateAcceleration;

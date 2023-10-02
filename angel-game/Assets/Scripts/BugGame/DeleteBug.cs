@@ -19,7 +19,7 @@ public class DeleteBug : MonoBehaviour
 
     private void Start()
     {
-        url = GameObject.Find("/BugGame/Microgame/Url");
+        url = GameObject.Find("/BugGame/Microgame/URL");
     }
 
     private void FixedUpdate()

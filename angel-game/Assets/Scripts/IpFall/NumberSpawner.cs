@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.UIElements;
+using UnityEngine.Device;
+using Screen = UnityEngine.Screen;
 
 public class NumberSpawner : MonoBehaviour
 {
@@ -25,6 +28,8 @@ public class NumberSpawner : MonoBehaviour
     [SerializeField] private ComputerMove _computer;
     [SerializeField] private Transform _startPosition;
     public Action OnMinigameComplete;
+
+    [SerializeField] private RectTransform _spawnZone;
 
     // Start is called before the first frame update
     public void StartMicroGame()
@@ -48,6 +53,20 @@ public class NumberSpawner : MonoBehaviour
             GlobalThings.IpGameIsOn = false;
             canvas.SetActive(false);
         }
+    }
+
+    private void CreateNumber()
+    {
+        float x = Random.Range(_spawnZone.position.x - _spawnZone.rect.width / 2 * Screen.width / 1920,
+            _spawnZone.position.x + _spawnZone.rect.width / 2 * Screen.width / 1920);
+        float y = Random.Range(_spawnZone.position.y - _spawnZone.rect.height / 2 * Screen.height / 1080,
+             _spawnZone.position.y + _spawnZone.rect.height / 2 * Screen.height / 1080);
+
+        Debug.Log(_spawnZone.rect.width * Screen.width / 1920);
+        Debug.Log(_spawnZone.rect.height);
+        Vector3 spawnPosition = new Vector3(x, y, 0);
+        GameObject go = Instantiate(number, spawnPosition, transform.rotation, parent);
+        numberList.Add(go);
     }
 
     private void SpawnNumber()
@@ -84,7 +103,8 @@ public class NumberSpawner : MonoBehaviour
     {
         while (GlobalThings.IpGameIsOn)
         {
-            SpawnNumber();
+            //SpawnNumber();
+            CreateNumber();
             yield return new WaitForSeconds(_spawnCooldown);
         }
     }

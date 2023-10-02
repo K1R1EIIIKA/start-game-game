@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.UIElements;
 
 public class BugSpawnMove : MonoBehaviour
 {
@@ -24,11 +25,14 @@ public class BugSpawnMove : MonoBehaviour
 
     public Action OnMinigameComplete;
 
+    [SerializeField] private List<Transform> _spawnZones;
+
     public void StartMicroGame()
     {
         DeleteBugs();
         RestartGame();
         GameManager.Instance.IsMinigameOpen = true;
+        GlobalThings.BugGameisOn = true;
     }
 
     public void RestartGame()
@@ -37,6 +41,22 @@ public class BugSpawnMove : MonoBehaviour
         PanelLose.SetActive(false);
         GlobalThings.BugGameisOn = true;
         StartCoroutine(ITimer());
+    }
+
+    private void CreateBug()
+    {
+        int index = Random.Range(0, _spawnZones.Count);
+        RectTransform rect = new RectTransform();
+        _spawnZones[index].TryGetComponent(out rect);
+
+        float x = Random.Range(_spawnZones[index].position.x - rect.rect.width / 2 * Screen.width / 1920,
+            _spawnZones[index].position.x + rect.rect.width / 2 * Screen.width / 1920);
+        float y = Random.Range(_spawnZones[index].position.y - rect.rect.height / 2 * Screen.height / 1080,
+             _spawnZones[index].position.y + rect.rect.height / 2 * Screen.height / 1080);
+
+        Vector3 spawnPosition = new Vector3(x, y, 0);
+        GameObject go = Instantiate(bug, spawnPosition, transform.rotation, parent);
+        bugList.Add(go);
     }
 
     private void FirstPos()
@@ -71,6 +91,7 @@ public class BugSpawnMove : MonoBehaviour
         {
             Destroy(bugList[i]);
         }
+        StopCoroutine(ITimer());
     }
 
     private void Update()
@@ -92,9 +113,10 @@ public class BugSpawnMove : MonoBehaviour
         while (GlobalThings.BugGameisOn)
         {
             yield return new WaitForSeconds(1f);
-            FirstPos();
-            yield return new WaitForSeconds(1f);
-            SecondPos();
+            CreateBug();
+            //FirstPos();
+            //yield return new WaitForSeconds(1f);
+            //SecondPos();
         }
     }
 }
